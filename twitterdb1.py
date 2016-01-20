@@ -15,35 +15,10 @@ class TwitterDB:
         self.wTree = gtk.Builder()  
 
 	self.wTree.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/"+self.gladefile)  
-        self.n=1
-        self.connector = sqlite3.connect("users.db")
-    	self.cursor    = self.connector.cursor()
-    	self.cursor.execute("SELECT * from followers")
 
+	self.label1 = self.wTree.get_object("result_1")
+	self.label2 = self.wTree.get_object("result_2")
 
-
-    	self.result = self.cursor.fetchall()
-
- 	for self.row in self.result:
-
-        #print "===== Hit! ====="
-
-        	print  str(self.n)  + "人目"
-
-        	print "code -- " + unicode(self.row[0])
-
-        	print "name -- " + unicode(self.row[1])
-
-        	print "name -- " + unicode(self.row[3])
-
-        	print "name -- " + unicode(self.row[4])
-
-        	print "name -- " + unicode(self.row[5])
-
-		self.n=self.n+1
-    	self.cursor.close()
-
-    	self.connector.close()
 	#Create our dictionay and connect it  
 	dic = {  
 
@@ -61,6 +36,40 @@ class TwitterDB:
     def on_btnOK_clicked(self,entry1):  
         #ウィンドウを閉じてアプリケーションを終了する  
 	#self.on_entry_activate
+	self.n=1
+        self.connector = sqlite3.connect("users.db")
+    	self.cursor    = self.connector.cursor()
+    	self.cursor.execute("SELECT * from followers")
+
+
+
+    	self.result = self.cursor.fetchall()
+
+ 	for self.row in self.result:
+
+        #print "===== Hit! ====="
+
+
+        	print  str(self.n)  + "人ijo目"
+        	#result1 = "code -- " + unicode(self.row[0])
+		#result_1.set result1
+
+        	print "name -- " + unicode(self.row[1])
+        	result2 = "code -- " + unicode(self.row[1])
+		#self.result_2.set "result2"
+		self.label1.set_text("Hello World!")
+
+        	print "name -- " + unicode(self.row[3])
+
+        	print "name -- " + unicode(self.row[4])
+
+        	print "name -- " + unicode(self.row[5])
+
+		self.n=self.n+1
+    	self.cursor.close()
+
+    	self.connector.close()
+
 	entry = self.wTree.get_object("entry1")
 	text1=entry.get_text()
 	print("%s" % text1)

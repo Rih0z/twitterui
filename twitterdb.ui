@@ -132,11 +132,12 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkLabel" id="result_n">
+                      <object class="GtkLabel" id="result_1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="yalign">0.4699999988079071</property>
                         <property name="label" translatable="yes">一人目</property>
+                        <signal name="button-press-event" handler="btOK_clicked_cb" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -145,10 +146,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="result_HN">
+                      <object class="GtkLabel" id="result_2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">label</property>
+                        <signal name="button-press-event" handler="btOK_clicked_cb" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">True</property>
