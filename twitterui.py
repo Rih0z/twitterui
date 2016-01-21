@@ -6,6 +6,7 @@ import os
 import os.path   
 import pygtk   
 import gtk    
+import Test 
 __author__="riho"   
 __date__ ="$2016/01/18 23:42:04$"    
   
@@ -34,14 +35,14 @@ class TwitterUI:
         #ウィンドウを閉じてアプリケーションを終了する  
 	#self.on_entry_activate
 	entry = self.wTree.get_object("entry1")
-	text1=entry.get_text()
-	print("%s" % text1)
+	Test.disp(entry.get_text())
+	#print("%s" % text1)
     def on_btnCancel_clicked(self,widget):  
         #ウィンドウを閉じてアプリケーションを終了する  
         gtk.main_quit()  
     def on_entry_activate(self,entry1):
-       text1=entry1.get_text()
-       print("%s" % text1)
+       Test.disp(entry1.get_text())
+       #print("%s" % text1)
 if __name__ == "__main__":  
     TwitterUI()  
     gtk.main()  
