@@ -24,7 +24,7 @@ class TwitterDB:
         self.tree.append_column( gtk.TreeViewColumn('profile', gtk.CellRendererText(), text=4) )
         self.tree.append_column( gtk.TreeViewColumn('followers_count', gtk.CellRendererText(), text=5) )
 
-        self.tree.set_model(gtk.ListStore(int, str, str,int,str,int))
+        self.tree.set_model(gtk.ListStore(int, str, str,str,str,str))
 
 	self.label1 = self.wTree.get_object("result_1")
 	self.label2 = self.wTree.get_object("result_2")
@@ -74,7 +74,7 @@ class TwitterDB:
     def on_btnOK_clicked(self,entry1):  
         #ウィンドウを閉じてアプリケーションを終了する  
 	#self.on_entry_activate
-        self.tree.get_model().append((1, '居石峻寛',"haruka_system",82,"ANCT5。プロコンの…プロコン。",3))
+        #self.tree.get_model().append((1, '居石峻寛',"haruka_system",82,"ANCT5。プロコンの…プロコン。",3))
 	self.n=1
 	self.count=1
         self.connector = sqlite3.connect("users.db")
@@ -87,7 +87,8 @@ class TwitterDB:
 
  	for self.row in self.result:
 
-        #print "===== Hit! ====="
+        #print "===== Hit! ====="       self.tree.set_model(gtk.ListStore(int, str, str,str,str,str))
+		
 
 		
         	#eval("r"+str(self.count)) = str(self.n)  + "人目"
@@ -114,7 +115,12 @@ class TwitterDB:
 		eval("self."+"label"+str(self.count)).set_text("code -- " + unicode(self.row[5]))
 		self.count=self.count+1
 
+		self.tree.get_model().append((self.n,unicode(self.row[0]),unicode(self.row[1]),unicode(self.row[3]),unicode(self.row[4]),unicode(self.row[5])))
+		
 		self.n=self.n+1
+		
+
+
     	self.cursor.close()
 
     	self.connector.close()
