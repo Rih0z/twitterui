@@ -15,7 +15,16 @@ class TwitterDB:
         self.wTree = gtk.Builder()  
 
 	self.wTree.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/"+self.gladefile)  
+	self.tree = self.wTree.get_object("treeview1")
 
+        self.tree.append_column( gtk.TreeViewColumn('No.', gtk.CellRendererText(), text=0) )
+        self.tree.append_column( gtk.TreeViewColumn('HN', gtk.CellRendererText(), text=1) )
+        self.tree.append_column( gtk.TreeViewColumn('ID', gtk.CellRendererText(), text=2) )
+        self.tree.append_column( gtk.TreeViewColumn('偽率', gtk.CellRendererText(), text=3) )
+        self.tree.append_column( gtk.TreeViewColumn('profile', gtk.CellRendererText(), text=4) )
+        self.tree.append_column( gtk.TreeViewColumn('followers_count', gtk.CellRendererText(), text=5) )
+
+        self.tree.set_model(gtk.ListStore(int, str, str,int,str,int))
 
 	self.label1 = self.wTree.get_object("result_1")
 	self.label2 = self.wTree.get_object("result_2")
@@ -65,6 +74,7 @@ class TwitterDB:
     def on_btnOK_clicked(self,entry1):  
         #ウィンドウを閉じてアプリケーションを終了する  
 	#self.on_entry_activate
+        self.tree.get_model().append((1, '居石峻寛',"haruka_system",82,"ANCT5。プロコンの…プロコン。",3))
 	self.n=1
 	self.count=1
         self.connector = sqlite3.connect("users.db")
