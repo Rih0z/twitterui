@@ -20,9 +20,9 @@ class TwitterDB:
         self.tree.append_column( gtk.TreeViewColumn('No.', gtk.CellRendererText(), text=0) )
         self.tree.append_column( gtk.TreeViewColumn('HN', gtk.CellRendererText(), text=1) )
         self.tree.append_column( gtk.TreeViewColumn('ID', gtk.CellRendererText(), text=2) )
-        self.tree.append_column( gtk.TreeViewColumn('偽率', gtk.CellRendererText(), text=3) )
+        self.tree.append_column( gtk.TreeViewColumn('偽率(％)', gtk.CellRendererText(), text=3) )
         self.tree.append_column( gtk.TreeViewColumn('profile', gtk.CellRendererText(), text=4) )
-        self.tree.append_column( gtk.TreeViewColumn('followers_count', gtk.CellRendererText(), text=5) )
+        self.tree.append_column( gtk.TreeViewColumn('followers_count(人)', gtk.CellRendererText(), text=5) )
 
         self.tree.set_model(gtk.ListStore(int, str, str,str,str,str))
 
@@ -96,23 +96,23 @@ class TwitterDB:
 		self.count=self.count+1
 
         	#eval("result"+str(self.count)) = "name -- " + unicode(self.row[0])
-		eval("self."+"label"+str(self.count)).set_text( "name -- " + unicode(self.row[0]))
+		eval("self."+"label"+str(self.count)).set_text( "HN -- " + unicode(self.row[0]))
 		self.count=self.count+1
 
         	#eval(result+str(self.count)) = "code -- " + unicode(self.row[1])
-		eval("self."+"label"+str(self.count)).set_text("code -- " + unicode(self.row[1]))
+		eval("self."+"label"+str(self.count)).set_text("ID -- " + unicode(self.row[1]))
 		self.count=self.count+1
 
         	#eval(result+str(self.count)) = "code -- " + unicode(self.row[3])
-		eval("self."+"label"+str(self.count)).set_text("code -- " + unicode(self.row[3]))
+		eval("self."+"label"+str(self.count)).set_text("偽率 -- " + unicode(self.row[3]))
 		self.count=self.count+1
 
         	#eval(result+str(self.count)) = "code -- " + unicode(self.row[4])
-		eval("self."+"label"+str(self.count)).set_text("code -- " + unicode(self.row[4]))
+		eval("self."+"label"+str(self.count)).set_text("profile -- " + unicode(self.row[4]))
 		self.count=self.count+1
 
         	#eval(result+str(self.count)) = "code -- " + unicode(self.row[5])
-		eval("self."+"label"+str(self.count)).set_text("code -- " + unicode(self.row[5]))
+		eval("self."+"label"+str(self.count)).set_text("followers_count -- " + unicode(self.row[5]))
 		self.count=self.count+1
 
 		self.tree.get_model().append((self.n,unicode(self.row[0]),unicode(self.row[1]),unicode(self.row[3]),unicode(self.row[4]),unicode(self.row[5])))
