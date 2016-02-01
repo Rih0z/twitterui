@@ -25,7 +25,6 @@ class TwitterDB:
         self.tree.append_column( gtk.TreeViewColumn('followers_count(人)', gtk.CellRendererText(), text=5) )
 
         self.tree.set_model(gtk.ListStore(int, str, str,str,str,str))
-
 	self.label1 = self.wTree.get_object("result_1")
 	self.label2 = self.wTree.get_object("result_2")
 	self.label3 = self.wTree.get_object("result_3")
@@ -78,7 +77,7 @@ class TwitterDB:
 	self.count=1
         self.connector = sqlite3.connect("users.db")
     	self.cursor    = self.connector.cursor()
-    	self.cursor.execute("SELECT * from followers")
+    	self.cursor.execute("SELECT * from followers ORDER BY false_percent DESC")
 
 
 
