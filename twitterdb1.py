@@ -62,8 +62,7 @@ class TwitterDB:
 
                 "btCancel_clicked_cb" : self.on_btnCancel_clicked,  
                 "btOK_clicked_cb" : self.on_btnOK_clicked,  
-                "on_TopLevel_destroy" : self.on_TopLevel_destroy,
-		"on_entry1_activate":self.on_entry_activate}    
+                "on_TopLevel_destroy" : self.on_TopLevel_destroy}    
 	self.wTree.connect_signals(dic) 
 
         self.mainWindow = self.wTree.get_object ("TopLevel")  
@@ -125,15 +124,11 @@ class TwitterDB:
 
     	self.connector.close()
 
-	entry = self.wTree.get_object("entry1")
-	text1=entry.get_text()
-	print("%s" % text1)
+
+
     def on_btnCancel_clicked(self,widget):  
         #ウィンドウを閉じてアプリケーションを終了する  
         gtk.main_quit()  
-    def on_entry_activate(self,entry1):
-       text1=entry1.get_text()
-       print("%s" % text1)
 
 
 if __name__ == "__main__":
